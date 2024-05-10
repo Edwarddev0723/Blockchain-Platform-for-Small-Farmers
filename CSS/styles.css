@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body {
+	font-family: 'Poppins', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	background-color: #fff;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.logo a {
+	display: block;
+}
+
+.logo img {
+	height: 40px;
+}
+
+.nav-links ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
+
+.nav-links li {
+	margin: 0 15px;
+}
+
+.nav-links a {
+	color: #333;
+	text-decoration: none;
+	font-weight: 500;
+	transition: color 0.3s;
+	position: relative;
+	padding-bottom: 5px;
+}
+
+.nav-links a:before {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	height: 2px;
+	background-color: #4CAF50;
+	transition: width 0.3s;
+}
+
+.nav-links a:hover:before {
+	width: 100%;
+}
+
+.nav-icons {
+	display: flex;
+	align-items: center;
+}
+
+.search-icon {
+	color: #333;
+	margin-right: 20px;
+	font-size: 18px;
+	transition: color 0.3s;
+	cursor: pointer;
+}
+
+.search-icon:hover {
+	color: #4CAF50;
+}
+
+.search-form {
+	display: none;
+	position: absolute;
+	top: 100%;
+	right: 0;
+	background-color: #fff;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	border-radius: 20px;
+	overflow: hidden;
+	animation: popUp 0.3s ease;
+}
+
+@keyframes popUp {
+	0% {
+		transform: scale(0);
+		opacity: 0;
+	}
+
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+.search-input {
+	padding: 5px 10px;
+	border: none;
+	outline: none;
+}
+
+.login-btn {
+	background-color: #4CAF50;
+	color: #fff;
+	padding: 10px 20px;
+	text-decoration: none;
+	border-radius: 20px;
+	transition: background-color 0.3s;
+	font-weight: 500;
+}
+
+.login-btn:hover {
+	background-color: #45a049;
+}
+
+main {
+	padding: 20px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+footer {
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding: 10px;
+}
+
+/* 其他樣式 */
+
+.intro {
+	background-color: white;
+	padding: 60px 0;
+}
+
+.intro-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.intro-content {
+	max-width: 600px;
+	padding: 0 20px;
+	text-align: center;
+}
+
+.intro h2 {
+	color: #4CAF50;
+	font-size: 36px;
+	margin-bottom: 20px;
+}
+
+.intro p {
+	font-size: 18px;
+	line-height: 1.6;
+	margin-bottom: 20px;
+}
+
+.intro-image img {
+	max-width: 500px;
+	height: auto;
+	border-radius: 0;
+	/* 移除圓角 */
+	box-shadow: none;
+	/* 移除陰影 */
+}
+
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: #fff;
+	/* 設置背景顏色,確保不被其他內容遮蓋 */
+	z-index: 999;
+	/* 確保 header 在最上層 */
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	/* 可選,添加陰影效果 */
+}
+
+.testimonials {
+	padding: 60px 0;
+	text-align: center;
+}
+
+.testimonial-slider {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.testimonial-item {
+	padding: 20px;
+}
+
+.testimonial-item p {
+	font-size: 18px;
+	line-height: 1.6;
+	margin-bottom: 20px;
+}
+
+.testimonial-item .author {
+	font-weight: bold;
+}
+
+
+.testimonials {
+	padding: 60px 0;
+	text-align: center;
+}
+
+.testimonial-slider {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.testimonial-item {
+	padding: 20px;
+}
+
+.testimonial-content {
+	display: flex;
+	align-items: center;
+	background-color: #f8f8f8;
+	border-radius: 8px;
+	padding: 20px;
+}
+
+.avatar img {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	margin-right: 20px;
+}
+
+.testimonial-text {
+	text-align: left;
+}
+
+.testimonial-text p {
+	font-size: 18px;
+	line-height: 1.6;
+	margin-bottom: 10px;
+}
+
+.testimonial-text .author {
+	font-weight: bold;
+}
+
+.slick-prev, .slick-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.slick-prev {
+    left: 1px;
+}
+
+.slick-next {
+    right: 1px;
+}
