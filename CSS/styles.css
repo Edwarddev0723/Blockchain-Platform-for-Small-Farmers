@@ -6,11 +6,6 @@ body {
 	padding: 0;
 }
 
-header {
-	background-color: #fff;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
 nav {
 	display: flex;
 	justify-content: space-between;
@@ -142,6 +137,7 @@ footer {
 .intro {
 	background-color: white;
 	padding: 60px 0;
+	
 }
 
 .intro-container {
@@ -150,12 +146,14 @@ footer {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	
 }
 
 .intro-content {
 	max-width: 600px;
 	padding: 0 20px;
-	text-align: center;
+	text-align: left;
+	
 }
 
 .intro h2 {
@@ -187,9 +185,7 @@ header {
 	background-color: #fff;
 	/* 設置背景顏色,確保不被其他內容遮蓋 */
 	z-index: 999;
-	/* 確保 header 在最上層 */
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	/* 可選,添加陰影效果 */
+	
 }
 
 .testimonials {
@@ -283,4 +279,34 @@ header {
 
 .slick-next {
     right: 1px;
+}
+
+.blockchain-features {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 40px;
+}
+
+.feature {
+    width: 23%; /* 調整每個特性區塊的寬度 */
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.feature-icon {
+    width: 60px; /* 調整圖示的寬度 */
+    height: 60px; /* 調整圖示的高度 */
+    margin-bottom: 10px;
+}
+
+.feature h3 {
+    font-size: 20px;
+    color: #4CAF50;
+}
+
+.feature p {
+    font-size: 16px;
+    line-height: 1.6;
 }
