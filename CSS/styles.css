@@ -316,97 +316,108 @@ header {
 	line-height: 1.6;
 }
 
-/* 彈出視窗樣式 */
 .loginmodal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-}
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .loginmodal-content {
+	background-color: #fff;
+	margin: 10% auto;
+	padding: 20px;
+	border: none;
+	width: 600px; /* 設定固定寬度 */
+	height: 400px; /* 設定固定高度 */
+	border-radius: 10px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  }
+  
+  .loginmodal-left {
+	flex: 1;
+	padding: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%; /* 設定高度為 100% 以填滿容器 */
+  }
+  
+  .loginmodal-left img {
+	max-width: 120%;
+	max-height: 100%; /* 限制圖片高度不超過容器 */
+	object-fit: cover;
+	object-position: center;
+  }
 
-.loginmodal-content {
-    background-color: #fff;
-    margin: 10% auto;
-    padding: 20px;
-    border: none;
-    width: 60%;
-    border-radius: 10px; /* 添加圓角 */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* 添加陰影效果 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.loginmodal-left {
-    flex: 1;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.loginmodal-left img {
-    max-width: 100%;
-    height: auto;
-}
-
-.loginmodal-right {
-    flex: 1;
-    padding: 20px;
-    text-align: center;
-}
-
-.loginclose {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.loginclose:hover,
-.loginclose:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* 表單樣式 */
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-label {
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-input[type="text"],
-input[type="password"] {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px; /* 添加圓角 */
-    width: 100%;
-    max-width: 300px;
-}
-
-button[type="submit"] {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 5px; /* 添加圓角 */
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button[type="submit"]:hover {
-    background-color: #45a049;
-}
+  .loginmodal-right h2 {
+	color: #4CAF50;
+  }
+  
+  .loginmodal-right {
+	flex: 1;
+	padding: 20px;
+	text-align: center;
+	height: 100%; /* 設定高度為 100% 以填滿容器 */
+	overflow: auto; /* 允許內容超過容器高度時滾動 */
+  }
+  
+  .loginclose {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+  }
+  
+  .loginclose:hover,
+  .loginclose:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+  }
+  
+  /* 表單樣式 */
+  form {
+	display: flex;
+	flex-direction: column;
+	align-items: right;
+	height: 150%; /* 設定高度為 100% 以填滿容器 */
+  }
+  
+  label {
+	margin-bottom: 10px;
+	font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+	padding: 10px;
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	width: 85%;
+	max-width: 300px;
+  }
+  
+  button[type="submit"] {
+	padding: 10px 20px;
+	background-color: #4CAF50;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	width: 50%;
+	transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+	background-color: #45a049;
+  }
