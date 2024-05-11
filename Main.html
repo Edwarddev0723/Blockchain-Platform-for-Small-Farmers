@@ -24,14 +24,30 @@
                 </ul>
             </div>
             <div class="nav-icons">
-                <a href="#" class="search-icon"><i class="fas fa-search"></i></a>
-                <form class="search-input">
-                    <input type="text" placeholder="搜尋..." class="search-input">
-                </form>
                 <a href="#" class="login-btn">登入</a>
             </div>
         </nav>
     </header>
+
+    <!-- 登入彈出視窗 -->
+    <div id="login-modal" class="loginmodal">
+        <div class="loginmodal-content">
+            <span class="loginclose">&times;</span>
+            <div class="loginmodal-left">
+                <img src="\IMG\Login.png" alt="Welcome Image">
+            </div>
+            <div class="modal-right">
+                <h2>登入</h2>
+                <form>
+                    <label for="username">使用者名稱:</label>
+                    <input type="text" id="username" name="username" placeholder="請輸入使用者名稱" required>
+                    <label for="password">密碼:</label>
+                    <input type="password" id="password" name="password" placeholder="請輸入密碼" required>
+                    <button type="submit">登入</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- 介紹文件 -->
     <article class="intro">
