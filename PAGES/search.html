@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>履歷查詢</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" />
+    <link rel="stylesheet" href="\CSS\search_styles.css">
+</head>
+
+<body>
+    <!-- 頁首和導覽列 -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="/Main.html"><img src="\IMG\icon.png" alt="Logo"></a>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="#">最新上架</a></li>
+                    <li><a href="#">履歷查詢</a></li>
+                    <li><a href="#">關於我們</a></li>
+                </ul>
+            </div>
+            <div class="nav-icons">
+                <a href="#" class="login-btn">登入</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 主要內容區塊 -->
+    <main>
+        <article class="traceability">
+            <div class="intro-container">
+                <div class="intro-content">
+                    <h2>履歷查詢</h2>
+                    <p>您可以透過輸入追溯號碼、選擇農場或輸入產品名稱來查看該產品的詳細履歷資訊。</p>
+                    <div class="search-form">
+                        <input type="text" placeholder="請輸入追溯號碼">
+                        <select>
+                            <option value="" disabled selected>選擇農場</option>
+                            <option value="farm1">農場 A</option>
+                            <option value="farm2">農場 B</option>
+                            <option value="farm3">農場 C</option>
+                        </select>
+                        <input type="text" placeholder="或輸入產品名稱">
+                        <button type="submit">查詢</button>
+                    </div>
+                </div>
+                <div class="intro-image">
+                    <img src="\IMG\Search\Search_main.png" alt="Traceability Image">
+                </div>
+            </div>
+            <div class="traceability-result">
+                <!-- 這裡將顯示查詢結果 -->
+            </div>
+        </article>
+
+        <!-- 推薦農場區塊 -->
+        <section class="recommended-farms">
+            <h2>推薦農場</h2>
+            <div class="farm-slider">
+                <div class="farm-item">
+                    <img src="\IMG\Search\Farm\Farm1.jpg" alt="Farm 1">
+                    <h3>東林草莓農場</h3>
+                    <p>位於台北市內湖區的白石休閒農業特，以無毒有機施作草莓及夏季蔬果，是個親子假日休閒、體驗食農教育的好所在。</p>
+                </div>
+                <div class="farm-item">
+                    <img src="\IMG\Search\Farm\Farm2.jpg" alt="Farm 2">
+                    <h3>台塑楊梅有機生態農場</h3>
+                    <p>台塑楊梅有機生態農場佔地39公頃，採有機種植蔬果已逾十年，造就農場美好自然生態環境!
+                        為推廣有機種植，結合食農教育、環境教育，農場於2021年起開放參觀~
+                        歡迎來農場了解有機種植流程、蔬果採摘體驗、餵養咕咕雞，並可DIY種植菜苗小盆栽!</p>
+                </div>
+                <div class="farm-item">
+                    <img src="\IMG\Search\Farm\Farm3.jpg" alt="Farm 3">
+                    <h3>雲林晁陽綠能休閒農場</h3>
+                    <p>亞洲首座寓教於樂的太陽能休閒農場「農電共榮 — 低碳、循環、永續」</p>
+                </div>
+                <div class="farm-item">
+                    <img src="\IMG\Search\Farm\Farm4.jpg" alt="Farm 1">
+                    <h3>仙山生態教育農場</h3>
+                    <p>想賞螢但又不想在野外等到天黑再疲累趕回家嗎?仙山生態教育農場空氣清晰環境優美，園內景觀可觀賞到夕陽、雲海，還可住宿及露營。每到賞螢季時，吸引許多上山賞螢的遊客前來，享受被螢火蟲包圍，住上一晚享受山林之夜的寧靜時光。</p>
+                </div>
+                <div class="farm-item">
+                    <img src="\IMG\Search\Farm\Farm1.jpg" alt="Farm 1">
+                    <h3>東林草莓農場</h3>
+                    <p>位於台北市內湖區的白石休閒農業特，以無毒有機施作草莓及夏季蔬果，是個親子假日休閒、體驗食農教育的好所在。</p>
+                </div>
+                <div class="farm-item">
+                    <img src="\IMG\Search\Farm\Farm2.jpg" alt="Farm 2">
+                    <h3>台塑楊梅有機生態農場</h3>
+                    <p>台塑楊梅有機生態農場佔地39公頃，採有機種植蔬果已逾十年，造就農場美好自然生態環境!
+                        為推廣有機種植，結合食農教育、環境教育，農場於2021年起開放參觀~
+                        歡迎來農場了解有機種植流程、蔬果採摘體驗、餵養咕咕雞，並可DIY種植菜苗小盆栽!</p>
+                </div>
+                <div class="farm-item">
+                    <img src="\IMG\Search\Farm\Farm3.jpg" alt="Farm 3">
+                    <h3>雲林晁陽綠能休閒農場</h3>
+                    <p>亞洲首座寓教於樂的太陽能休閒農場「農電共榮 — 低碳、循環、永續」</p>
+                </div>
+                <div class="farm-item">
+                    <img src="\IMG\Search\Farm\Farm4.jpg" alt="Farm 1">
+                    <h3>仙山生態教育農場</h3>
+                    <p>想賞螢但又不想在野外等到天黑再疲累趕回家嗎?仙山生態教育農場空氣清晰環境優美，園內景觀可觀賞到夕陽、雲海，還可住宿及露營。每到賞螢季時，吸引許多上山賞螢的遊客前來，享受被螢火蟲包圍，住上一晚享受山林之夜的寧靜時光。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 頁尾 -->
+    <footer>
+        <p>&copy; 2023 Cupee 小黃瓜皮股份有限公司</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="\SCRIPT\script.js"></script>
+</body>
+
+</html>
