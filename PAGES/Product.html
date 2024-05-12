@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>產品展示</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="\CSS\Product_styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.21/jquery.csv.min.js"></script>
 </head>
+
 <body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="/Main.html"><img src="\IMG\icon.png" alt="Logo"></a>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="\PAGES\Product.html">最新上架</a></li>
+                    <li><a href="\PAGES\search.html">履歷查詢</a></li>
+                    <li><a href="#">關於我們</a></li>
+                </ul>
+            </div>
+            <div class="nav-icons">
+                <a href="#" class="login-btn">登入</a>
+            </div>
+        </nav>
+    </header>
+
     <div class="container">
         <aside class="filters">
             <h3>篩選條件</h3>
@@ -18,7 +40,7 @@
         </aside>
         <main>
             <div class="ad-banner">
-                <img src="ad_banner.jpg" alt="廣告橫幅">
+                <img src="\IMG\advertisement\adv1.png" alt="廣告橫幅">
             </div>
             <div class="product-grid">
                 <div class="product-item">
@@ -31,6 +53,12 @@
             </div>
         </main>
     </div>
-    <script src="script.js"></script>
+    
+    <script src="\SCRIPT\Product.js"></script>
 </body>
+<footer>
+    <p>&copy; 2023 Cupee 小黃瓜皮股份有限公司</p>
+</footer>
+
+
 </html>
