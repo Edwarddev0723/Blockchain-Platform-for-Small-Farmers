@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo a {
+  display: block;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.nav-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav-links li {
+  margin: 0 15px;
+}
+
+.nav-links a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.nav-links a:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #4CAF50;
+  transition: width 0.3s;
+}
+
+.nav-links a:hover:before {
+  width: 100%;
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  color: #333;
+  margin-right: 20px;
+  font-size: 18px;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.search-icon:hover {
+  color: #4CAF50;
+}
+
+.search-form {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  animation: popUp 0.3s ease;
+}
+
+@keyframes popUp {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.search-input {
+  padding: 5px 10px;
+  border: none;
+  outline: none;
+  margin-right: 20px;
+}
+
+.login-btn {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+  font-weight: 500;
+}
+
+.login-btn:hover {
+  background-color: #45a049;
+}
+
+main {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+/* 介紹區塊 */
+.intro-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.intro-section h2 {
+  color: #333;
+  font-weight: 600;
+}
+
+.intro-section p {
+  color: #666;
+}
+
+/* 農場基礎資訊 */
+.farm-info-section p {
+  margin-bottom: 10px;
+}
+
+/* 時間軸 */
+.timeline-section {
+  position: relative;
+  padding-left: 30px;
+}
+
+.timeline-section:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 2px;
+  background-color: #ccc;
+}
+
+.timeline-item {
+  position: relative;
+  padding: 15px 20px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.timeline-item:before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: -30px;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+}
+
+/* 記錄 */
+.record-item {
+  background-color: #f4f4f4;
+  padding: 15px 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.record-item h5 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.record-item p {
+  color: #666;
+}
+
+.banner {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.banner img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+
+  .nav-icons {
+    margin-top: 10px;
+  }
+
+  .search-form {
+    top: auto;
+    bottom: -60px;
+    left: 0;
+    right: auto;
+    border-radius: 0 0 20px 20px;
+  }
+}

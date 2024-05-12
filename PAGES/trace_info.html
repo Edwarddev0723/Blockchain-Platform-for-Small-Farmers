@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>農場查詢頁面</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="\CSS\trace_info_styles.css">
+</head>
+
+<body>
+    <!-- 最上方導引列 -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="#"><img src="\IMG\icon.png" alt="Logo"></a>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="\PAGES\Product.html">最新上架</a></li>
+                    <li><a href="\PAGES\search.html">履歷查詢</a></li>
+                    <li><a href="#">關於我們</a></li>
+                </ul>
+            </div>
+            <div class="nav-icons">
+                <a href="#" class="login-btn">登入</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="banner">
+                    <img src="\IMG\main_trace.png"  alt="Banner Image">
+                </div>
+                <div class="farm-info-section mb-4">
+                    <h3>農場基礎資訊</h3>
+                    <p>農場: 台大實驗林</p>
+                    <p>城市: 南投縣</p>
+                    <p>城鎮: 竹山鎮</p>
+                    <p>地址: 南山路一段12號</p>
+                    <p>電話: 049 2642181</p>
+                </div>
+                <div class="timeline-section mb-4">
+                    <h3>時間軸</h3>
+                    <div id="timeline"></div>
+                </div>
+                <div class="records-section">
+                    <h3>記錄</h3>
+                    <div id="records"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script>
+        // 模擬的記錄資料
+        const records = [
+            { date: '2020-06-10', description: '春季作業' },
+            { date: '2020-06-08', description: '夏季' },
+            // 添加更多記錄...
+        ];
+
+        // 渲染時間軸
+        records.forEach(record => {
+            const item = $('<div>').addClass('timeline-item').text(record.date);
+            $('#timeline').append(item);
+        });
+
+        // 渲染記錄
+        records.forEach(record => {
+            const item = $('<div>').addClass('record-item').html(`
+        <h5>${record.date}</h5>
+        <p>${record.description}</p>
+      `);
+            $('#records').append(item);
+        });
+    </script>
+</body>
+<footer>
+    <p>&copy; 2023 Cupee 小黃瓜皮股份有限公司</p>
+</footer>
+
+</html>
