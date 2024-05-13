@@ -35,31 +35,32 @@
                 <div class="banner">
                     <img src="\IMG\main_trace.png" alt="Banner Image">
                 </div>
+
                 <div class="farm-info-section mb-4">
                     <h3>農場基礎資訊</h3>
                     <table class="farm-table">
-                      <tr>
-                        <td>農場</td>
-                        <td>台大實驗林</td>
-                      </tr>
-                      <tr>
-                        <td>城市</td>
-                        <td>南投縣</td>
-                      </tr>
-                      <tr>
-                        <td>城鎮</td>
-                        <td>竹山鎮</td>
-                      </tr>
-                      <tr>
-                        <td>地址</td>
-                        <td>南山路一段12號</td>
-                      </tr>
-                      <tr>
-                        <td>電話</td>
-                        <td>049 2642181</td>
-                      </tr>
+                        <tr>
+                            <td>農場</td>
+                            <td>台大實驗林</td>
+                        </tr>
+                        <tr>
+                            <td>城市</td>
+                            <td>南投縣</td>
+                        </tr>
+                        <tr>
+                            <td>城鎮</td>
+                            <td>竹山鎮</td>
+                        </tr>
+                        <tr>
+                            <td>地址</td>
+                            <td>南山路一段12號</td>
+                        </tr>
+                        <tr>
+                            <td>電話</td>
+                            <td>049 2642181</td>
+                        </tr>
                     </table>
-                  </div>
+                </div>
                 <div class="container cal">
                     <div class="calendar">
                         <div class="calendar-header">
@@ -74,91 +75,96 @@
                 </div>
             </div>
         </div>
-        </div>
+        <button type="submit" id="returnButton" >返回查詢頁面</button>
+    </div>
 
-        <footer>
-            <p>&copy; 2023 Cupee 小黃瓜皮股份有限公司</p>
-        </footer>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script>
-            // 模擬的記錄資料
-            const records = [
-                { date: '2020-06-10', description: '春季作業' },
-                { date: '2020-06-08', description: '夏季' },
-                // 添加更多記錄...
-            ];
 
-            // 獲取日曆格子的日期
-            function getCalendarCellDate(row, col) {
-                const firstDay = new Date(records[0].date);
-                const startDate = new Date(firstDay.getFullYear(), firstDay.getMonth(), 1);
-                const startDay = startDate.getDay(); // 本月第一天是星期幾 (0-6)
-                const daysInMonth = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0).getDate(); // 本月天數
+    <footer>
+        <p>&copy; 2023 Cupee 小黃瓜皮股份有限公司</p>
+    </footer>
 
-                const totalCells = 42; // 顯示 6 週的日曆 (6 * 7)
-                const currentMonthDays = [];
+    <script src="\SCRIPT\trace_info.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script>
+        // 模擬的記錄資料
+        const records = [
+            { date: '2020-06-10', description: '春季作業' },
+            { date: '2020-06-08', description: '夏季' },
+            // 添加更多記錄...
+        ];
 
-                for (let i = 0; i < totalCells; i++) {
-                    const currentDate = new Date(startDate);
-                    currentDate.setDate(startDate.getDate() + i - startDay);
+        // 獲取日曆格子的日期
+        function getCalendarCellDate(row, col) {
+            const firstDay = new Date(records[0].date);
+            const startDate = new Date(firstDay.getFullYear(), firstDay.getMonth(), 1);
+            const startDay = startDate.getDay(); // 本月第一天是星期幾 (0-6)
+            const daysInMonth = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0).getDate(); // 本月天數
 
-                    const cellDate = {
-                        day: currentDate.getDate(),
-                        month: currentDate.getMonth() + 1,
-                        year: currentDate.getFullYear(),
-                    };
+            const totalCells = 42; // 顯示 6 週的日曆 (6 * 7)
+            const currentMonthDays = [];
 
-                    currentMonthDays.push(cellDate);
-                }
+            for (let i = 0; i < totalCells; i++) {
+                const currentDate = new Date(startDate);
+                currentDate.setDate(startDate.getDate() + i - startDay);
 
-                const targetCell = currentMonthDays[row * 7 + col];
-                if (targetCell && targetCell.day <= daysInMonth) {
-                    return `${targetCell.year}-${targetCell.month.toString().padStart(2, '0')}-${targetCell.day.toString().padStart(2, '0')}`;
-                }
-                return null;
+                const cellDate = {
+                    day: currentDate.getDate(),
+                    month: currentDate.getMonth() + 1,
+                    year: currentDate.getFullYear(),
+                };
+
+                currentMonthDays.push(cellDate);
             }
 
-            // 渲染日曆格子
-            function renderCalendar() {
-                const calendarGrid = $('#calendar-grid');
-                const weeks = 6;
-                const daysOfWeek = ['日', '一', '二', '三', '四', '五', '六'];
+            const targetCell = currentMonthDays[row * 7 + col];
+            if (targetCell && targetCell.day <= daysInMonth) {
+                return `${targetCell.year}-${targetCell.month.toString().padStart(2, '0')}-${targetCell.day.toString().padStart(2, '0')}`;
+            }
+            return null;
+        }
 
-                for (let i = 0; i < weeks; i++) {
-                    for (let j = 0; j < 7; j++) {
-                        const cellDate = getCalendarCellDate(i, j);
-                        const calendarDay = $('<div>').addClass('calendar-day').text(cellDate ? cellDate.slice(-2) : '');
+        // 渲染日曆格子
+        function renderCalendar() {
+            const calendarGrid = $('#calendar-grid');
+            
+            const weeks = 6;
+            const daysOfWeek = ['日', '一', '二', '三', '四', '五', '六'];
 
-                        if (cellDate) {
-                            const hasRecord = records.some(record => record.date === cellDate);
-                            if (hasRecord) {
-                                calendarDay.addClass('has-record');
-                            }
+            for (let i = 0; i < weeks; i++) {
+                for (let j = 0; j < 7; j++) {
+                    const cellDate = getCalendarCellDate(i, j);
+                    const calendarDay = $('<div>').addClass('calendar-day').text(cellDate ? cellDate.slice(-2) : '');
+
+                    if (cellDate) {
+                        const hasRecord = records.some(record => record.date === cellDate);
+                        if (hasRecord) {
+                            calendarDay.addClass('has-record');
                         }
-
-                        calendarGrid.append(calendarDay);
                     }
+
+                    calendarGrid.append(calendarDay);
                 }
             }
+        }
 
-            // 渲染記錄
-            function renderRecords() {
-                const recordsContainer = $('#records');
-                records.forEach(record => {
-                    const recordItem = $('<div>').addClass('record-item');
-                    recordItem.html(`
+        // 渲染記錄
+        function renderRecords() {
+            const recordsContainer = $('#records');
+            records.forEach(record => {
+                const recordItem = $('<div>').addClass('record-item');
+                recordItem.html(`
             <h5>${record.date}</h5>
             <p>${record.description}</p>
         `);
-                    recordsContainer.append(recordItem);
-                });
-            }
+                recordsContainer.append(recordItem);
+            });
+        }
 
-            // 初始化日曆和記錄
-            renderCalendar();
-            renderRecords();
-        </script>
+        // 初始化日曆和記錄
+        renderCalendar();
+        renderRecords();
+    </script>
 </body>
 
 

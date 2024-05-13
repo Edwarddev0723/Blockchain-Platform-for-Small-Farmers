@@ -1,21 +1,7 @@
-// 模擬的記錄資料
-const records = [
-    { date: '2020-06-10', description: '春季作業' },
-    { date: '2020-06-08', description: '夏季' },
-    // 添加更多記錄...
-  ];
-  
-  // 渲染時間軸
-  records.forEach(record => {
-    const item = $('<div>').addClass('timeline-item').text(record.date);
-    $('#timeline').append(item);
+$(document).ready(function() {
+  // 監聽查詢按鈕點擊事件
+  $('#returnButton').on('click', function() {
+      // 導向指定頁面（假設是 /results.html）
+      window.location.href = '/PAGES/search.html';
   });
-  
-  // 渲染記錄
-  records.forEach(record => {
-    const item = $('<div>').addClass('record-item').html(`
-      <h5>${record.date}</h5>
-      <p>${record.description}</p>
-    `);
-    $('#records').append(item);
-  });
+});
