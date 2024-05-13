@@ -1,11 +1,14 @@
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
+/* Reset default styles and apply global settings */
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif; /* Use Google Font */
   margin: 0;
   padding: 0;
 }
 
+/* Navigation bar styles */
 nav {
   display: flex;
   justify-content: space-between;
@@ -38,9 +41,8 @@ nav {
   color: #333;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s;
   position: relative;
-  padding-bottom: 5px;
+  transition: color 0.3s;
 }
 
 .nav-links a:before {
@@ -63,6 +65,7 @@ nav {
   align-items: center;
 }
 
+/* Search icon styles */
 .search-icon {
   color: #333;
   margin-right: 20px;
@@ -75,6 +78,7 @@ nav {
   color: #4CAF50;
 }
 
+/* Search form styles */
 .search-form {
   display: none;
   position: absolute;
@@ -105,6 +109,7 @@ nav {
   margin-right: 20px;
 }
 
+/* Login button styles */
 .login-btn {
   background-color: #4CAF50;
   color: #fff;
@@ -119,92 +124,14 @@ nav {
   background-color: #45a049;
 }
 
+/* Main content area styles */
 main {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-footer {
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  padding: 10px;
-}
-
-/* 介紹區塊 */
-.intro-section {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.intro-section h2 {
-  color: #333;
-  font-weight: 600;
-}
-
-.intro-section p {
-  color: #666;
-}
-
-/* 農場基礎資訊 */
-.farm-info-section p {
-  margin-bottom: 10px;
-}
-
-/* 時間軸 */
-.timeline-section {
-  position: relative;
-  padding-left: 30px;
-}
-
-.timeline-section:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 2px;
-  background-color: #ccc;
-}
-
-.timeline-item {
-  position: relative;
-  padding: 15px 20px;
-  background-color: #f4f4f4;
-  border-radius: 5px;
-  margin-bottom: 30px;
-}
-
-.timeline-item:before {
-  content: '';
-  position: absolute;
-  top: 20px;
-  left: -30px;
-  width: 20px;
-  height: 20px;
-  background-color: #fff;
-  border: 2px solid #ccc;
-  border-radius: 50%;
-}
-
-/* 記錄 */
-.record-item {
-  background-color: #f4f4f4;
-  padding: 15px 20px;
-  border-radius: 5px;
-  margin-bottom: 20px;
-}
-
-.record-item h5 {
-  margin-bottom: 10px;
-  color: #333;
-}
-
-.record-item p {
-  color: #666;
-}
-
+/* Banner styles */
 .banner {
   text-align: center;
   margin-bottom: 40px;
@@ -216,7 +143,137 @@ footer {
   border-radius: 5px;
 }
 
-/* 響應式設計 */
+/* Introduction section styles */
+/* 基本表格樣式 */
+.farm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+/* 表格頭部樣式 */
+.farm-table th {
+  background-color: #4CAF50; /* 背景色 */
+  color: white; /* 文字顏色 */
+  font-weight: bold;
+  padding: 12px;
+  text-align: left;
+}
+
+/* 單元格樣式 */
+.farm-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  padding: auto;
+  text-align: center;
+}
+
+/* 奇數行背景色 */
+.farm-table tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+/* 滑鼠懸停行背景色 */
+.farm-table tr:hover {
+  background-color: #e1e1e1;
+}
+
+
+/* Timeline section styles */
+/* 新增日曆專用樣式 */
+.container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.calendar {
+  flex: 1; /* 佔滿可用空間 */
+  margin-right: 20px; /* 加上右側間距 */
+}
+
+.records-section {
+  flex: 1; /* 佔滿可用空間 */
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.calendar-day {
+  padding: 10px;
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.calendar-day.has-record {
+  background-color: #4CAF50; /* 有記錄的日期背景色 */
+  color: #fff;
+}
+
+.records-section {
+  flex: 1; /* 讓記錄區塊佔滿可用空間 */
+}
+
+.record-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 响應式設計 */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* 手機版時將排列改為垂直 */
+  }
+
+  .calendar {
+    margin-right: 0; /* 手機版時移除右側間距 */
+    margin-bottom: 20px; /* 手機版時增加下方間距 */
+  }
+}
+
+
+/* Records section styles */
+.records-section {
+    margin-bottom: 10px;
+}
+
+.record-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.record-item h5 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.record-item p {
+  color: #666;
+}
+
+footer {
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding: 10px;
+}
+
+/* Responsive design styles */
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
@@ -244,3 +301,4 @@ footer {
     border-radius: 0 0 20px 20px;
   }
 }
+
