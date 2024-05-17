@@ -95,3 +95,20 @@ $(document).ready(function() {
         window.location.href = '/PAGES/trace_info.html';
     });
 });
+
+document.getElementById('connect-wallet-btn').addEventListener('click', async () => {
+    if (typeof window.ethereum !== 'undefined') {
+        try {
+            // 請求用戶授權連接MetaMask
+            await window.ethereum.request({ method: 'eth_requestAccounts' });
+            const web3 = new Web3(window.ethereum);
+            const accounts = await web3.eth.getAccounts();
+            console.log('Connected account:', accounts[0]);
+            alert('已連接MetaMask錢包');
+        } catch (error) {
+            console.error('User denied account access', error);
+        }
+    } else {
+        alert('請安裝MetaMask錢包擴充功能');
+    }
+});
