@@ -408,3 +408,9 @@ button#connect-wallet-btn {
 button#connect-wallet-btn:hover {
 	background-color: #45a049;
 }
+
+#logged-in-icon img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}

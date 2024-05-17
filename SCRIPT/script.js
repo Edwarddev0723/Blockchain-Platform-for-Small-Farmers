@@ -105,6 +105,10 @@ document.getElementById('connect-wallet-btn').addEventListener('click', async ()
             const accounts = await web3.eth.getAccounts();
             console.log('Connected account:', accounts[0]);
             alert('已連接MetaMask錢包');
+            if (accounts.length > 0) {
+                document.getElementById('login-button').style.display = 'none';
+                document.getElementById('logged-in-icon').style.display = 'block';
+            }
         } catch (error) {
             console.error('User denied account access', error);
         }
