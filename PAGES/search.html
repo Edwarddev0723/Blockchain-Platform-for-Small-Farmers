@@ -113,7 +113,18 @@
     <footer>
         <p>&copy; 2023 Cupee 小黃瓜皮股份有限公司</p>
     </footer>
-
+    <script>
+        $(document).ready(function () {
+            $('#queryButton').click(function () {
+                var productId = $('#productIdInput').val();
+                if (productId) {
+                    window.location.href = `trace_info.html?productId=${productId}`;
+                } else {
+                    alert('請輸入追溯號碼');
+                }
+            });
+        });
+    </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script src="\SCRIPT\script.js"></script>
