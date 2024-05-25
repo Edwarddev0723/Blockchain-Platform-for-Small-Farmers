@@ -75,7 +75,7 @@
                 </div>
             </div>
         </div>
-        <button type="submit" id="returnButton" >返回查詢頁面</button>
+        <button type="submit" id="returnButton">返回查詢頁面</button>
     </div>
 
 
@@ -86,7 +86,126 @@
 
     <script src="\SCRIPT\trace_info.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@4.8.0/dist/web3.min.js"></script>
     <script>
+        const web3 = new Web3('https://mainnet.infura.io/v3/b1cbe283ad6043f2903391795df54441');
+
+        // 合約 ABI 和地址
+        const contractABI = [
+            {
+                "inputs": [
+                    {
+                        "internalType": "uint256",
+                        "name": "productId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "description",
+                        "type": "string"
+                    }
+                ],
+                "name": "addRecord",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "createProduct",
+                "outputs": [
+                    {
+                        "internalType": "uint256",
+                        "name": "",
+                        "type": "uint256"
+                    }
+                ],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "anonymous": false,
+                "inputs": [
+                    {
+                        "indexed": false,
+                        "internalType": "uint256",
+                        "name": "productId",
+                        "type": "uint256"
+                    },
+                    {
+                        "indexed": false,
+                        "internalType": "address",
+                        "name": "owner",
+                        "type": "address"
+                    }
+                ],
+                "name": "ProductCreated",
+                "type": "event"
+            },
+            {
+                "anonymous": false,
+                "inputs": [
+                    {
+                        "indexed": false,
+                        "internalType": "uint256",
+                        "name": "productId",
+                        "type": "uint256"
+                    },
+                    {
+                        "indexed": false,
+                        "internalType": "uint256",
+                        "name": "timestamp",
+                        "type": "uint256"
+                    },
+                    {
+                        "indexed": false,
+                        "internalType": "string",
+                        "name": "description",
+                        "type": "string"
+                    }
+                ],
+                "name": "RecordAdded",
+                "type": "event"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "uint256",
+                        "name": "productId",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "getRecords",
+                "outputs": [
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint256",
+                                "name": "timestamp",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "description",
+                                "type": "string"
+                            }
+                        ],
+                        "internalType": "struct AgriProductTrace.Record[]",
+                        "name": "",
+                        "type": "tuple[]"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            }
+        ]; // 替換為您的合約 ABI
+        const contractAddress = '0xC4df0d3b385af43856340E3235C8b42Eb43ee4EA'; // 替換為您的合約地址
+
+        // 獲取合約實例
+        const contract = new web3.eth.Contract(contractABI, contractAddress);
+
+
+
         // 模擬的記錄資料
         const records = [
             { date: '2020-06-10', description: '春季作業' },
@@ -127,7 +246,7 @@
         // 渲染日曆格子
         function renderCalendar() {
             const calendarGrid = $('#calendar-grid');
-            
+
             const weeks = 6;
             const daysOfWeek = ['日', '一', '二', '三', '四', '五', '六'];
 
@@ -149,16 +268,27 @@
         }
 
         // 渲染記錄
-        function renderRecords() {
+        async function renderRecords() {
             const recordsContainer = $('#records');
-            records.forEach(record => {
-                const recordItem = $('<div>').addClass('record-item');
-                recordItem.html(`
-            <h5>${record.date}</h5>
-            <p>${record.description}</p>
-        `);
-                recordsContainer.append(recordItem);
-            });
+            recordsContainer.empty(); // 清空之前的記錄
+
+            try {
+                const accounts = await web3.eth.requestAccounts();
+                const records = await contract.methods.getRecords().call({ from: accounts[0] });
+
+                records.forEach(record => {
+                    const recordItem = $('<div>').addClass('record-item');
+                    const date = new Date(record.timestamp * 1000); // 將時間戳轉換為日期對象
+                    const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+                    recordItem.html(`
+        <h5>${formattedDate}</h5>
+        <p>${record.description}</p>
+      `);
+                    recordsContainer.append(recordItem);
+                });
+            } catch (error) {
+                console.error('Error getting records:', error);
+            }
         }
 
         // 初始化日曆和記錄
