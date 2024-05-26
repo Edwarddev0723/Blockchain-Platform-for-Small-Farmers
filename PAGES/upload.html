@@ -40,6 +40,9 @@
                 <div class="intro-content">
                     <div class="left-form">
                         <h2>創建產品</h2>
+                        <div class="intro-image">
+                            <img src="/IMG/Search/Search_main.png" alt="Traceability Image">
+                        </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="productName" placeholder="請輸入產品名稱">
                         </div>
@@ -59,21 +62,7 @@
                             <button class="btn btn-primary" id="createProductButton">創建新產品</button>
                         </div>
                     </div>
-                    <div class="right-form">
-                        <h2>添加履歷</h2>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="productId" placeholder="請輸入產品 ID">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="description" placeholder="請輸入履歷描述">
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-primary" id="addRecordButton">添加履歷記錄</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="intro-image">
-                    <img src="/IMG/Search/Search_main.png" alt="Traceability Image">
+                    
                 </div>
             </div>
         </article>
@@ -114,7 +103,23 @@
                     const productPrice = document.getElementById('productPrice').value;
                     const accounts = await web3.eth.getAccounts();
                     const userAccount = accounts[0];
+                    
+                    const newProductData = {
+                            name: productName,
+                            variety: productVariety,
+                            origin: productOrigin,
+                            description: productDescription,
+                            price: productPrice
+                        };
 
+                        await fetch('http://127.0.0.1:5000/api/products/create', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(newProductData)
+                        });
+                    
                     try {
                         const result = await contract.methods.createProduct(
                             productName, productVariety, productOrigin, productDescription, productPrice

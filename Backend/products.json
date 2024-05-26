@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "name": "\u860b\u679c",
+        "description": "\u65b0\u9bae\u860b\u679c",
+        "price": 2.5,
+        "image": "apple.jpg"
+    },
+    {
+        "id": 2,
+        "name": "\u9999\u8549",
+        "description": "\u65b0\u9bae\u9999\u8549",
+        "price": 1.8,
+        "image": "banana.jpg"
+    },
+    {
+        "id": 3,
+        "name": "\u6a59\u5b50",
+        "description": "\u65b0\u9bae\u6a59\u5b50",
+        "price": 3.0,
+        "image": "orange.jpg"
+    },
+    {
+        "name": "\u9ad8\u9e97\u83dc",
+        "variety": "\u9ad8\u5c71\u9ad8\u9e97\u83dc",
+        "origin": "\u5c4f\u6771",
+        "description": "\u9bae\u751c\u53ef\u53e3",
+        "price": "80"
+    }
+]

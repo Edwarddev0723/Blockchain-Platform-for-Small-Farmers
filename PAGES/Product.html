@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="\CSS\Product_styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.21/jquery.csv.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -34,32 +34,75 @@
     <div class="container">
         <aside class="filters">
             <h3>篩選條件</h3>
-            <button>熱門推薦</button>
-            <button>上週熱銷</button>
-            <button>價格由低到高</button>
-            <button>價格由高到低</button>
+            <button id="popular">熱門推薦</button>
+            <button id="weekly">上週熱銷</button>
+            <button id="lowToHigh">價格由低到高</button>
+            <button id="highToLow">價格由高到低</button>
         </aside>
         <main>
             <div class="ad-banner">
                 <img src="\IMG\advertisement\adv1.png" alt="廣告橫幅">
             </div>
             <div id="product-grid">
-                <div class="product-item">
-                    <img src="product1.jpg" alt="產品1">
-                    <h4>產品名稱 1</h4>
-                    <p>產品描述...</p>
-                    <button>加入購物車</button>
-                </div>
-                <!-- 更多產品項目 -->
+                <!-- 這裡將顯示從後端動態加載的產品信息 -->
             </div>
         </main>
     </div>
     
     <script src="\SCRIPT\Product.js"></script>
+    <script>
+        $(document).ready(function () {
+            // 在這裡添加JavaScript代碼來處理篩選和排序按鈕的點擊事件
+            $('#popular').click(function () {
+                // 處理熱門推薦篩選
+            });
+
+            $('#weekly').click(function () {
+                // 處理上週熱銷篩選
+            });
+
+            $('#lowToHigh').click(function () {
+                // 處理價格由低到高排序
+            });
+
+            $('#highToLow').click(function () {
+                // 處理價格由高到低排序
+            });
+
+            // 加載產品信息
+            $.ajax({
+                url: 'http://127.0.0.1:5000/api/products', // 替換為您的後端API端點
+                method: 'GET',
+                success: function (data) {
+                    // 在這裡處理從後端獲取的產品數據並將其動態添加到product-grid中
+                    data.forEach(function (product) {
+                        var productItem = `
+                            <div class="product-item">
+                                <img src="${product.image}" alt="${product.name}">
+                                <h4>${product.name}</h4>
+                                <p>${product.description}</p>
+                                <button class="addToCart" data-id="${product.id}">加入購物車</button>
+                            </div>
+                        `;
+                        $('#product-grid').append(productItem);
+                    });
+                },
+                error: function (error) {
+                    console.error('Error loading products:', error);
+                    alert('Error loading products:', error);
+                }
+            });
+
+            // 加入購物車按鈕的點擊事件
+            $(document).on('click', '.addToCart', function () {
+                var productId = $(this).data('id');
+                // 在這裡處理將產品添加到購物車的操作
+            });
+        });
+    </script>
 </body>
 <footer>
     <p>&copy; 2023 Cupee 小黃瓜皮股份有限公司</p>
 </footer>
-
 
 </html>
