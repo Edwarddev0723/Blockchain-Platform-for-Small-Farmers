@@ -62,6 +62,7 @@
                         </tr>
                     </table>
                 </div>
+
                 <div class="product-list-section">
                     <h3>上架農產品</h3>
                     <ul class="product-list">
@@ -115,6 +116,40 @@
         </div>
     </div>
 
+    <script>
+        $(document).ready(function () {
+
+            // 加載產品信息
+            $.ajax({
+                url: 'http://127.0.0.1:5000/api/products', // 替換為您的後端API端點
+                method: 'GET',
+                success: function (data) {
+                    // 在這裡處理從後端獲取的產品數據並將其動態添加到product-grid中
+                    data.forEach(function (product) {
+                        var productItem = `
+                        <li>
+                                <div class="product-info">
+                                    <div class="product-details">
+                                        <h2>${product.name}</h2>
+                                        <p><strong>品種:</strong> ${product.variety}</p>
+                                        <p><strong>產地:</strong> ${product.origin}</p>
+                                        <p><strong>${product.description}</strong></p>
+                                        <p><strong>價格:</strong> $${product.price}</p>
+                                    </div>
+                                    <div class="product-price">$50/公斤</div>
+                                </div>
+                            </li>
+                    `;
+                        $('#product-list').append(productItem);
+                    });
+                },
+                error: function (error) {
+                    console.error('Error loading products:', error);
+                    alert('Error loading products:', error);
+                }
+            });
+        });
+    </script>
     <script src="\SCRIPT\script.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/web3@4.8.0/dist/web3.min.js"></script>

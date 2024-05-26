@@ -25,9 +25,6 @@ def get_products():
 @app.route('/api/products/create', methods=['POST'])
 def create_product():
     data = request.json
-    image = request.files['image']  # 取得用戶上傳的照片文件
-    # 將照片保存在指定的上傳資料夾內
-    image.save(os.path.join(app.config['UPLOAD_FOLDER'], image.filename))
     products = load_products_from_json()
     products.append(data)
     save_to_json(products)  # 將更新後的數據寫入JSON檔案
