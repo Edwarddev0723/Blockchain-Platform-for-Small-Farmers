@@ -4,8 +4,9 @@ body {
 	font-family: 'Poppins', sans-serif;
 	margin: 0;
 	padding: 0;
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 }
 
 nav {
@@ -65,7 +66,6 @@ nav {
 	align-items: center;
 }
 
-
 .search-input {
 	padding: 5px 10px;
 	border: none;
@@ -91,6 +91,7 @@ main {
 	padding: 20px;
 	max-width: 1200px;
 	margin: 0 auto;
+	flex: 1;
 }
 
 footer {
@@ -98,284 +99,309 @@ footer {
 	color: #fff;
 	text-align: center;
 	padding: 10px;
-    position: fixed;
-    left: 0;
-  bottom: 0;
-  width: 100%;
-
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
 }
+
 /* 導覽列樣式 */
 .traceability {
-    background-color: white;
-    padding: 60px 20px;
+	background-color: white;
+	padding: 60px 20px;
 }
 
 .traceability .intro-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap; /* 允許內容換行 */
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
 }
 
 .traceability .intro-content {
-    max-width: 600px;
-    padding: 20px;
-    text-align: left;
-    flex: 1; /* 讓內容區塊可以伸縮 */
+	max-width: 600px;
+	padding: 20px;
+	text-align: left;
+	flex: 1;
 }
 
 .traceability h2 {
-    color: #4CAF50;
-    font-size: 36px;
-    margin-bottom: 20px;
+	color: #4CAF50;
+	font-size: 36px;
+	margin-bottom: 20px;
 }
 
 .traceability p {
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 20px;
+	font-size: 18px;
+	line-height: 1.6;
+	margin-bottom: 20px;
 }
 
 .search-form {
-    display: flex;
-    flex-wrap: wrap; /* 允許表單元素換行 */
-    margin-bottom: 40px;
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: 40px;
 }
 
 .search-form input[type="text"],
 .search-form select {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    width: calc(50% - 5px); /* 設置每個輸入框或選單佔一半寬度 */
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	width: calc(50% - 5px);
 }
 
 .search-form button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-bottom: 10px;
-}
-.search-form button:hover {
-    background: #000;
-    cursor: pointer;
+	padding: 10px 20px;
+	background-color: #4CAF50;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	margin-bottom: 10px;
 }
 
 .search-form button:hover {
-    background-color: #45a049;
+	background-color: #000;
+	cursor: pointer;
+}
+
+.search-form button:hover {
+	background-color: #45a049;
 }
 
 .traceability .intro-image {
-    max-width: 500px;
-    flex: 1; /* 讓圖片區塊可以伸縮 */
+	max-width: 500px;
+	flex: 1;
 }
 
 .traceability .intro-image img {
-    max-width: 100%;
-    height: auto;
+	max-width: 100%;
+	height: auto;
 }
 
 .traceability-result {
-    max-width: 800px;
-    margin: 40px auto 0;
-    background-color: #f8f8f8;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: left;
+	max-width: 800px;
+	margin: 40px auto 0;
+	background-color: #f8f8f8;
+	padding: 20px;
+	border-radius: 8px;
+	text-align: left;
 }
 
 /*推薦農場*/
-/* 其他樣式 */
-/* ... */
-
 .recommended-farms {
-    padding: 60px 20px;
-    text-align: center;
+	padding: 60px 20px;
+	text-align: center;
 }
 
 .recommended-farms h2 {
-    color: #4CAF50;
-    font-size: 36px;
-    margin-bottom: 40px;
+	color: #4CAF50;
+	font-size: 36px;
+	margin-bottom: 40px;
 }
 
 .farm-slider {
-    max-width: 800px;
-    margin: 0 auto;
+	max-width: 800px;
+	margin: 0 auto;
 }
 
 .farm-item {
-    padding: 20px;
-    text-align: left;
+	padding: 20px;
+	text-align: left;
 }
 
 .farm-item img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
+	max-width: 100%;
+	height: auto;
+	border-radius: 8px;
 }
 
 .farm-item h3 {
-    color: #4CAF50;
-    font-size: 24px;
-    margin: 20px 0 10px;
+	color: #4CAF50;
+	font-size: 24px;
+	margin: 20px 0 10px;
 }
 
 .farm-item p {
-    font-size: 16px;
-    line-height: 1.6;
+	font-size: 16px;
+	line-height: 1.6;
 }
 
 .slick-dots {
-    bottom: -40px; /* 調整導航點的位置 */
+	bottom: -40px;
 }
 
 .slick-dots li button:before {
-    font-size: 12px; /* 調整導航點的大小 */
-    color: #4CAF50; /* 調整導航點的顏色 */
-    opacity: 0.5; /* 調整導航點的不透明度 */
+	font-size: 12px;
+	color: #4CAF50;
+	opacity: 0.5;
 }
 
 .slick-dots li.slick-active button:before {
-    opacity: 1; /* 調整當前導航點的不透明度 */
+	opacity: 1;
 }
-
-/* 頁尾樣式 */
-/* ... */
 
 /* 小螢幕設備 */
 @media (max-width: 767px) {
-    .traceability .intro-container {
-        flex-direction: column; /* 在小螢幕時將內容和圖片垂直堆疊 */
-    }
+	.traceability .intro-container {
+		flex-direction: column;
+	}
 
-    .search-form input[type="text"],
-    .search-form select {
-        width: 100%; /* 在小螢幕時輸入框和選單佔滿整個寬度 */
-    }
+	.search-form input[type="text"],
+	.search-form select {
+		width: 100%;
+	}
 }
 
 .traceability {
-    background-color: white;
-    padding: 60px 20px;
+	background-color: white;
+	padding: 60px 20px;
 }
 
 .traceability .intro-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
 }
 
 .traceability .intro-content {
-    max-width: 600px;
-    padding: 20px;
-    text-align: left;
-    flex: 1;
+	max-width: 600px;
+	padding: 20px;
+	text-align: left;
+	flex: 1;
 }
 
 .traceability h2 {
-    color: #4CAF50;
-    font-size: 36px;
-    margin-bottom: 20px;
+	color: #4CAF50;
+	font-size: 36px;
+	margin-bottom: 20px;
 }
 
 .traceability p {
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 20px;
+	font-size: 18px;
+	line-height: 1.6;
+	margin-bottom: 20px;
 }
 
 .form-group {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 #createProductButton,
 #addRecordButton {
-    padding: 12px 24px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 16px;
-    font-weight: 600;
-    text-transform: uppercase;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	padding: 12px 24px;
+	background-color: #4CAF50;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	font-size: 16px;
+	font-weight: 600;
+	text-transform: uppercase;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 #createProductButton:hover,
 #addRecordButton:hover {
-    background-color: #3e8e41;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transform: translateY(-2px);
+	background-color: #3e8e41;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+	transform: translateY(-2px);
 }
 
 .traceability .intro-image {
-    max-width: 500px;
-    flex: 1;
+	max-width: 500px;
+	flex: 1;
 }
 
 .traceability .intro-image img {
-    max-width: 100%;
-    height: auto;
+	max-width: 100%;
+	height: auto;
+	border-radius: 10px;
 }
 
 .traceability {
-    position: relative;
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 20px auto;
+	position: relative;
+	background-color: #f9f9f9;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	max-width: 800px;
+	margin: 20px auto;
 }
 
 .traceability::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #e0e0e0;
-    z-index: -1;
-    border-radius: 10px;
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #e0e0e0;
+	z-index: -1;
+	border-radius: 10px;
 }
 
 .intro-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
 }
 
 .intro-content {
-    flex: 1;
-    display: flex;
-    justify-content: space-between;
+	flex: 1;
+	display: flex;
+	justify-content: space-between;
 }
 
 .left-form, .right-form {
-    flex: 1;
-    margin: 10px;
+	flex: 1;
+	margin: 10px;
 }
 
 .form-group {
-    margin-bottom: 15px;
+	margin-bottom: 15px;
 }
 
 .intro-image img {
-    max-width: 100%;
-    border-radius: 10px;
+	max-width: 100%;
+	border-radius: 10px;
 }
+
+/* 表單動畫 */
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.form-group {
+	opacity: 0;
+	animation: fadeInUp 0.5s ease forwards;
+	animation-delay: calc(var(--i) * 0.1s);
+}
+
+#productName { --i: 1; }
+#productVariety { --i: 2; }
+#productOrigin { --i: 3; }
+#productDescription { --i: 4; }
+#productPrice { --i: 5; }
+#createProductButton { --i: 6; }
+
+#productId { --i: 1; }
+#description { --i: 2; }
+#addRecordButton { --i: 3; }

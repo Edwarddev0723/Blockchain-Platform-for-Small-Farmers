@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" />
     <script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
     <link rel="stylesheet" href="\CSS\upload.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -18,14 +17,14 @@
     <header>
         <nav>
             <div class="logo">
-                <a href="#"><img src="/IMG/icon.png" alt="Logo"></a>
+                <a href="/Main.html"><img src="\IMG\icon.png" alt="Logo"></a>
             </div>
             <div class="nav-links">
                 <ul>
                     <li><a href="\PAGES\Product.html">最新上架</a></li>
                     <li><a href="\PAGES\search.html">履歷查詢</a></li>
-                    <li><a href="/PAGES/upload.html">履歷上架與更新</a></li>
-                    <li><a href="#">我的農場</a></li>
+                    <li><a href="\PAGES\upload.html">履歷上架與更新</a></li>
+                    <li><a href="\PAGES\my_farm.html">我的農場</a></li>
                 </ul>
             </div>
             <div class="nav-icons">
@@ -45,7 +44,16 @@
                             <input type="text" class="form-control" id="productName" placeholder="請輸入產品名稱">
                         </div>
                         <div class="form-group">
-                            <input ctype="text" class="form-control" id="productName" placeholder="請輸入履歷描述">
+                            <input type="text" class="form-control" id="productVariety" placeholder="請輸入品種">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="productOrigin" placeholder="請輸入產地">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="productDescription" placeholder="請輸入描述">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="productPrice" placeholder="請輸入價格">
                         </div>
                         <div class="form-group">
                             <button class="btn btn-primary" id="createProductButton">創建新產品</button>
@@ -79,8 +87,8 @@
 
     <script>
         // 智能合約 ABI 和地址
-        const contractABI = [{ "anonymous": false, "inputs": [{ "indexed": false, "internalType": "uint256", "name": "productId", "type": "uint256" }, { "indexed": false, "internalType": "string", "name": "name", "type": "string" }, { "indexed": false, "internalType": "address", "name": "owner", "type": "address" }], "name": "ProductCreated", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "internalType": "uint256", "name": "productId", "type": "uint256" }, { "indexed": false, "internalType": "uint256", "name": "timestamp", "type": "uint256" }, { "indexed": false, "internalType": "string", "name": "description", "type": "string" }], "name": "RecordAdded", "type": "event" }, { "inputs": [{ "internalType": "uint256", "name": "productId", "type": "uint256" }, { "internalType": "string", "name": "description", "type": "string" }], "name": "addRecord", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "string", "name": "name", "type": "string" }], "name": "createProduct", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "productId", "type": "uint256" }], "name": "getProduct", "outputs": [{ "components": [{ "internalType": "uint256", "name": "id", "type": "uint256" }, { "internalType": "string", "name": "name", "type": "string" }], "internalType": "struct AgriProductTrace.Product", "name": "", "type": "tuple" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "productId", "type": "uint256" }], "name": "getRecords", "outputs": [{ "components": [{ "internalType": "uint256", "name": "timestamp", "type": "uint256" }, { "internalType": "string", "name": "description", "type": "string" }], "internalType": "struct AgriProductTrace.Record[]", "name": "", "type": "tuple[]" }], "stateMutability": "view", "type": "function" }];
-        const contractAddress = '0xc5fFeDfC70478F0A6f701e72d9a0D1De7293658a'; // 替換為您的合約地址
+        const contractABI = [{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"productId","type":"uint256"},{"indexed":false,"internalType":"string","name":"name","type":"string"},{"indexed":false,"internalType":"string","name":"variety","type":"string"},{"indexed":false,"internalType":"string","name":"origin","type":"string"},{"indexed":false,"internalType":"string","name":"description","type":"string"},{"indexed":false,"internalType":"string","name":"price","type":"string"},{"indexed":false,"internalType":"address","name":"owner","type":"address"}],"name":"ProductCreated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"productId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"timestamp","type":"uint256"},{"indexed":false,"internalType":"string","name":"description","type":"string"}],"name":"RecordAdded","type":"event"},{"inputs":[{"internalType":"uint256","name":"productId","type":"uint256"},{"internalType":"string","name":"description","type":"string"}],"name":"addRecord","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"variety","type":"string"},{"internalType":"string","name":"origin","type":"string"},{"internalType":"string","name":"description","type":"string"},{"internalType":"string","name":"price","type":"string"}],"name":"createProduct","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"productId","type":"uint256"}],"name":"getProduct","outputs":[{"components":[{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"variety","type":"string"},{"internalType":"string","name":"origin","type":"string"},{"internalType":"string","name":"description","type":"string"},{"internalType":"string","name":"price","type":"string"}],"internalType":"struct AgriProductTrace.Product","name":"","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"productId","type":"uint256"}],"name":"getRecords","outputs":[{"components":[{"internalType":"uint256","name":"timestamp","type":"uint256"},{"internalType":"string","name":"description","type":"string"}],"internalType":"struct AgriProductTrace.Record[]","name":"","type":"tuple[]"}],"stateMutability":"view","type":"function"}];
+        const contractAddress = '0x25CEc1af82afEB889bB6624BAe09F6c520AA8Fd6'; // 替換為您的合約地址
 
         // 等待網頁加載完成
         document.addEventListener('DOMContentLoaded', async () => {
@@ -100,11 +108,17 @@
                 // 創建新產品
                 document.getElementById('createProductButton').addEventListener('click', async () => {
                     const productName = document.getElementById('productName').value;
+                    const productVariety = document.getElementById('productVariety').value;
+                    const productOrigin = document.getElementById('productOrigin').value;
+                    const productDescription = document.getElementById('productDescription').value;
+                    const productPrice = document.getElementById('productPrice').value;
                     const accounts = await web3.eth.getAccounts();
                     const userAccount = accounts[0];
 
                     try {
-                        const result = await contract.methods.createProduct(productName).send({ from: userAccount });
+                        const result = await contract.methods.createProduct(
+                            productName, productVariety, productOrigin, productDescription, productPrice
+                        ).send({ from: userAccount });
                         const productId = result.events.ProductCreated.returnValues.productId;
                         alert(`新產品已創建，產品 ID: ${productId}`);
                     } catch (error) {

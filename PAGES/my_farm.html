@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的農場</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="\CSS\trace_info_styles.css">
+    <link rel="stylesheet" href="\CSS\my_farm_styles.css">
 </head>
 
 <body>
@@ -14,14 +14,14 @@
     <header>
         <nav>
             <div class="logo">
-                <a href="#"><img src="\IMG\icon.png" alt="Logo"></a>
+                <a href="/Main.html"><img src="\IMG\icon.png" alt="Logo"></a>
             </div>
             <div class="nav-links">
                 <ul>
                     <li><a href="\PAGES\Product.html">最新上架</a></li>
                     <li><a href="\PAGES\search.html">履歷查詢</a></li>
-                    <li><a href="/PAGES/upload.html">履歷上架與更新</a></li>
-                    <li><a href="#">我的農場</a></li>
+                    <li><a href="\PAGES\upload.html">履歷上架與更新</a></li>
+                    <li><a href="\PAGES\my_farm.html">我的農場</a></li>
                 </ul>
             </div>
             <div class="nav-icons">
@@ -34,7 +34,7 @@
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <div class="banner">
-                    <img src="\IMG\main_trace.png" alt="Banner Image">
+                    <img src="\IMG\main_farm.png" alt="Banner Image">
                 </div>
 
                 <div class="farm-info-section mb-4">
@@ -62,15 +62,65 @@
                         </tr>
                     </table>
                 </div>
+                <div class="product-list-section">
+                    <h3>上架農產品</h3>
+                    <ul class="product-list">
+                        <li>
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h4>蘋果</h4>
+                                    <p>品種: 富士蘋果</p>
+                                    <p>產地: 南投縣竹山鎮</p>
+                                    <p>描述: 新鮮甜脆,口感絕佳</p>
+                                </div>
+                                <div class="product-price">$50/公斤</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h4>香蕉</h4>
+                                    <p>品種: 紅蕉</p>
+                                    <p>產地: 高雄市美濃區</p>
+                                    <p>描述: 香甜多汁,口感細緻</p>
+                                </div>
+                                <div class="product-price">$30/公斤</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h4>橘子</h4>
+                                    <p>品種: 文旦柚</p>
+                                    <p>產地: 台東縣池上鄉</p>
+                                    <p>描述: 肉質飽滿,甜度適中</p>
+                                </div>
+                                <div class="product-price">$80/公斤</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h4>葡萄</h4>
+                                    <p>品種: 巨峰葡萄</p>
+                                    <p>產地: 台南市善化區</p>
+                                    <p>描述: 顆粒飽滿,香甜可口</p>
+                                </div>
+                                <div class="product-price">$120/公斤</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                <footer>
-                    <p>&copy; 2023 Cupee 小黃瓜皮股份有限公司</p>
-                </footer>
-
-                <script src="\SCRIPT\trace_info.js"></script>
-                <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-                <script src="https://cdn.jsdelivr.net/npm/web3@4.8.0/dist/web3.min.js"></script>
+    <script src="\SCRIPT\script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@4.8.0/dist/web3.min.js"></script>
 </body>
-
+<footer>
+    <p>&copy; 2023 Cupee 小黃瓜皮股份有限公司</p>
+</footer>
 
 </html>

@@ -1,57 +1,343 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* Reset default styles and apply global settings */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
+  font-family: 'Poppins', sans-serif; /* Use Google Font */
+  margin: 0;
+  padding: 0;
 }
 
-header {
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    padding: 1em;
+/* Navigation bar styles */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-section {
-    padding: 2em;
-    margin: 2em;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+.logo a {
+  display: block;
 }
 
-h2 {
-    color: #333;
+.logo img {
+  height: 40px;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 2em;
+.nav-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
 }
 
-table th, table td {
-    padding: 1em;
-    border: 1px solid #ddd;
-    text-align: left;
+.nav-links li {
+  margin: 0 15px;
 }
 
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1em;
+.nav-links a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s;
 }
 
-.product-item {
+.nav-links a:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #4CAF50;
+  transition: width 0.3s;
+}
+
+.nav-links a:hover:before {
+  width: 100%;
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+}
+
+/* Search icon styles */
+.search-icon {
+  color: #333;
+  margin-right: 20px;
+  font-size: 18px;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.search-icon:hover {
+  color: #4CAF50;
+}
+
+/* Search form styles */
+.search-form {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  animation: popUp 0.3s ease;
+}
+
+@keyframes popUp {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.search-input {
+  padding: 5px 10px;
+  border: none;
+  outline: none;
+  margin-right: 20px;
+}
+
+/* Login button styles */
+.login-btn {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+  font-weight: 500;
+}
+
+.login-btn:hover {
+  background-color: #45a049;
+}
+
+/* Main content area styles */
+main {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Banner styles */
+.banner {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.banner img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* Introduction section styles */
+/* 基本表格樣式 */
+.farm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+/* 表格頭部樣式 */
+.farm-table th {
+  background-color: #4CAF50; /* 背景色 */
+  color: white; /* 文字顏色 */
+  font-weight: bold;
+  padding: 12px;
+  text-align: left;
+}
+
+/* 單元格樣式 */
+.farm-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  padding: auto;
+  text-align: center;
+}
+
+/* 奇數行背景色 */
+.farm-table tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+/* 滑鼠懸停行背景色 */
+.farm-table tr:hover {
+  background-color: #e1e1e1;
+}
+
+
+/* Timeline section styles */
+/* 新增日曆專用樣式 */
+.container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.calendar {
+  flex: 1; /* 佔滿可用空間 */
+  margin-right: 20px; /* 加上右側間距 */
+}
+
+.records-section {
+  flex: 1; /* 佔滿可用空間 */
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.calendar-day {
+  padding: 10px;
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.calendar-day.has-record {
+  background-color: #4CAF50; /* 有記錄的日期背景色 */
+  color: #fff;
+}
+
+.records-section {
+  flex: 1; /* 讓記錄區塊佔滿可用空間 */
+}
+
+.record-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 响應式設計 */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* 手機版時將排列改為垂直 */
+  }
+
+  .calendar {
+    margin-right: 0; /* 手機版時移除右側間距 */
+    margin-bottom: 20px; /* 手機版時增加下方間距 */
+  }
+}
+
+
+/* Records section styles */
+.records-section {
+    margin-bottom: 10px;
+}
+
+.record-item {
     background-color: #fff;
-    padding: 1em;
     border: 1px solid #ddd;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.record-item h5 {
+  margin-bottom: 10px;
+  color: #333;
 }
 
-.product-item h3 {
-    margin-top: 0;
+.record-item p {
+  color: #666;
 }
 
-.product-item p {
-    margin: 0.5em 0;
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+  align-items: center;
+  justify-items: center;
+}
+button:hover {
+  background: #000;
+  cursor: pointer;
+}
+
+/* Responsive design styles */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+
+  .nav-icons {
+    margin-top: 10px;
+  }
+
+  .search-form {
+    top: auto;
+    bottom: -60px;
+    left: 0;
+    right: auto;
+    border-radius: 0 0 20px 20px;
+  }
+}
+
+
+footer {
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding: 10px;
+    position: fixed;
+    left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.product-list {
+  list-style: none;
+  padding: 0;
+}
+
+.product-list li {
+  background-color: #f5f5f5;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-list li:hover {
+  transform: translateY(-5px);
 }
