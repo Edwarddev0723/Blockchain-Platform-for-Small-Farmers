@@ -341,3 +341,9 @@ footer {
 .product-list li:hover {
   transform: translateY(-5px);
 }
+
+#logged-in-icon img {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}

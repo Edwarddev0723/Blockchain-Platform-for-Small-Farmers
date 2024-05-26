@@ -405,3 +405,9 @@ footer {
 #productId { --i: 1; }
 #description { --i: 2; }
 #addRecordButton { --i: 3; }
+
+#logged-in-icon img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}

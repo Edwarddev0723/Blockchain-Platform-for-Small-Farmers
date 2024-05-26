@@ -28,7 +28,7 @@
                 </ul>
             </div>
             <div class="nav-icons">
-                <a href="#" class="login-btn">登入</a>
+                <a href="#" id="logged-in-icon"><img src="\IMG\user.png" alt="Logged In"></a>
             </div>
         </nav>
     </header>
@@ -65,6 +65,27 @@
                     
                 </div>
             </div>
+            
+        </article>
+        <article class="traceability">
+
+            <div class="intro-container">
+                <div class="intro-content">
+                    <div class="right-form">
+                        <h2>更新產品履歷</h2>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="description" placeholder="請輸入履歷編號">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="description" placeholder="請輸入履歷描述">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" id="addRecordButton">添加履歷記錄</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </article>
 
     </main>
@@ -104,22 +125,6 @@
                     const accounts = await web3.eth.getAccounts();
                     const userAccount = accounts[0];
                     
-                    const newProductData = {
-                            name: productName,
-                            variety: productVariety,
-                            origin: productOrigin,
-                            description: productDescription,
-                            price: productPrice
-                        };
-
-                        await fetch('http://127.0.0.1:5000/api/products/create', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(newProductData)
-                        });
-                    
                     try {
                         const result = await contract.methods.createProduct(
                             productName, productVariety, productOrigin, productDescription, productPrice
@@ -130,6 +135,24 @@
                         console.error(error);
                         alert('創建產品失敗');
                     }
+
+                    const newProductData = {
+                            name: productName,
+                            variety: productVariety,
+                            origin: productOrigin,
+                            description: productDescription,
+                            price: productPrice
+                        };
+
+                    await fetch('http://127.0.0.1:5000/api/products/create', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(newProductData)
+                    });
+                    
+                    
                 });
 
                 // 添加履歷記錄
