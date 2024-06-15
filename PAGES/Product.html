@@ -170,11 +170,11 @@
                                 showCancelButton: true,
                                 confirmButtonColor: '#3085d6',
                                 cancelButtonColor: '#d33',
-                                confirmButtonText: '是的，是得前往結帳',
+                                confirmButtonText: '是的，前往結帳',
                                 cancelButtonText: '取消',
                                 preConfirm: () => {
                                     // 然后跳转到结账页面
-                                    window.location.href = "/Checkout.html"; // 请根据实际URL路径调整
+                                    //window.location.href = "/Checkout.html"; // 请根据实际URL路径调整
                                 }
                             }).then((result) => {
                                 if (result.isConfirmed) {

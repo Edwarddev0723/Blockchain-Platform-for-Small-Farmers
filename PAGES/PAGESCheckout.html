@@ -1,1 +1,116 @@
-<h1>hekko</h1>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>產品展示</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/CSS/Product_styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .container {
+        flex: 1;
+        padding: 20px;
+        background: #f4f4f4;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        text-align: left;
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+    }
+    .footer {
+        background-color: #222;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        width: 100%;
+    }
+</style>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="/Main.html"><img src="\IMG\icon.png" alt="Logo"></a>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="\PAGES\Product.html">最新上架</a></li>
+                    <li><a href="\PAGES\search.html">履歷查詢</a></li>
+                    <li><a href="\PAGES\upload.html">履歷上架與更新</a></li>
+                    <li><a href="\PAGES\my_farm.html">我的農場</a></li>
+                    
+                </ul>
+            </div>
+            <div class="nav-icons">
+                <a href="#" id="logged-in-icon"><img src="/IMG/user.png" alt="Logged In"></a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>商品名称</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                    <th>总价</th>
+                </tr>
+            </thead>
+            <tbody id="cartItems"></tbody>
+        </table>
+        <button onclick="checkout()">结账</button>
+    </div>
+
+
+
+
+
+    
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cartData = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
+        const cartItems = document.getElementById('cartItems');
+
+        cartData.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${item.name}</td>
+                <td>$${item.price.toFixed(2)}</td>
+                <td><input type="number" value="${item.quantity}" min="1" onchange="updateTotal(this, ${item.price})"></td>
+                <td>$${(item.price * item.quantity).toFixed(2)}</td>
+            `;
+            cartItems.appendChild(row);
+        });
+    });
+
+    function updateTotal(input, price) {
+        const totalCell = input.parentNode.nextElementSibling;
+        totalCell.innerText = '$' + (input.value * price).toFixed(2);
+    }
+
+    function checkout() {
+        alert('前往结账页面');
+    }
+</script>
+<footer>
+    <p>&copy; 2023 Cupee 小黃瓜皮股份有限公司</p>
+</footer>
+
+</html>
