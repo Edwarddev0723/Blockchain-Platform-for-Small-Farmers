@@ -40,5 +40,19 @@
         "origin": "\u65b0\u5317\u5e02\u677f\u6a4b",
         "description": "\u81ea\u5bb6\u967d\u53f0\u7a2e\u690d\uff0c10\u514b",
         "price": "25"
+    },
+    {
+        "name": "\u967d\u53f0\u4e5d\u5c64\u5854_20240615",
+        "variety": "\u9ad8\u5c71\u9ad8\u9e97\u83dc",
+        "origin": "\u65b0\u7af9\u7e23\u7af9\u5317",
+        "description": "\u9bae\u751c\u53ef\u53e3",
+        "price": "80"
+    },
+    {
+        "name": "\u967d\u53f0\u4e5d\u5c64\u5854_20240615",
+        "variety": "\u68a8\u5c71\u9ad8\u9e97\u83dc",
+        "origin": "\u65b0\u7af9\u7e23\u7af9\u5317",
+        "description": "\u81ea\u5bb6\u967d\u53f0\u7a2e\u690d\uff0c10\u514b",
+        "price": "25"
     }
 ]
