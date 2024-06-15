@@ -7,33 +7,40 @@ app = Flask(__name__)
 CORS(app)
 
 UPLOAD_FOLDER = 'uploads'
-app.config['uploads'] = UPLOAD_FOLDER
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# 讀取JSON檔案
+def save_to_json(data):
+    try:
+        with open('products.json', 'w') as f:
+            json.dump(data, f, indent=4)
+    except IOError as e:
+        print(f"Error saving file: {e}")
+
 def load_products_from_json():
-    with open('products.json', 'r', encoding='utf-8') as file:
-        products_data = json.load(file)
-    return products_data
+    try:
+        with open('products.json', 'r', encoding='utf-8') as file:
+            return json.load(file)
+    except IOError:
+        print("File not found, creating a new one.")
+        return []
+    except json.JSONDecodeError:
+        print("Error decoding JSON, starting with an empty list.")
+        return []
 
-# 返回所有產品信息
 @app.route('/api/products', methods=['GET'])
 def get_products():
     products = load_products_from_json()
     return jsonify(products)
 
-# 創建新產品
 @app.route('/api/products/create', methods=['POST'])
 def create_product():
     data = request.json
+    if 'name' not in data or 'price' not in data:
+        return Response("Missing 'name' or 'price' in the request", status=400)
     products = load_products_from_json()
     products.append(data)
-    save_to_json(products)  # 將更新後的數據寫入JSON檔案
+    save_to_json(products)
     return Response(status=201)
-
-# 將數據寫入JSON檔案
-def save_to_json(data):
-    with open('products.json', 'w') as f:
-        json.dump(data, f, indent=4)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -287,3 +287,27 @@ main {
     height: 40px;
     cursor: pointer;
 }
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  margin-bottom: 4px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+}
+
+.cart-item p {
+  margin: 0;
+  padding: 0 10px;
+}
+
+.remove-item {
+  color: red;
+  cursor: pointer;
+  padding: 6px 12px;
+  border: none;
+  background: none;
+  font-size: 16px;
+}

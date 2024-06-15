@@ -144,25 +144,48 @@
                 var shoppingCart = localStorage.getItem('shoppingCart');
                 if (shoppingCart) {
                     shoppingCart = JSON.parse(shoppingCart);
-                    var cartHtml = '<ul>';
-                    shoppingCart.forEach(function(item) {
-                        cartHtml += `<li>${item.name} - 數量: ${item.quantity} - 單價: $${item.price}</li>`;
+                    var cartHtml = '<ul style="list-style: none;">';  // 移除默认列表样式
+                    var total = 0;  // 初始化总金额为0
+                    shoppingCart.forEach(function(item, index) {
+                        var itemTotal = item.quantity * item.price;  // 计算每个商品的总价
+                        total += itemTotal;  // 累加到购物车总金额
+                        cartHtml += `<li class="cart-item">${item.name} - 数量: ${item.quantity} - 单价: $${item.price.toFixed(2)} - 总价: $${itemTotal.toFixed(2)}
+                            <button class="remove-item" data-index="${index}" onclick="removeItemFromCart(${index})">&times;</button></li>`;
                     });
-                    cartHtml += '</ul>';
+                    cartHtml += `</ul><p>总计: $${total.toFixed(2)}</p>`;  // 显示总金额
                     Swal.fire({
-                        title: '購物車內容',
+                        title: '购物车内容',
                         html: cartHtml,
-                        confirmButtonText: '關閉'
-                    });
+                        showCancelButton: true,
+                        confirmButtonText: '结账',
+                        cancelButtonText: '关闭',
+                        reverseButtons: true,
+                        preConfirm: () => {
+                            // 添加你的结账逻辑或跳转到结账页面的代码
+                            console.log("进行结账流程");
+                        },
+                        didRender: () => {
+                            document.querySelectorAll('.remove-item').forEach((button, index) => {
+                                button.addEventListener('click', () => {
+                                    removeItemFromCart(index);
+                                });
+                            });
+                        },});
                 } else {
-                    Swal.fire('購物車是空的', '', 'info');
+                    Swal.fire('购物车是空的', '', 'info');
                 }
-            }
+                        }
 
-            // 綁定按鈕事件
-            document.getElementById('view-cart').addEventListener('click', showCartContents);
-            
-        });
+                        // 綁定按鈕事件
+                        document.getElementById('view-cart').addEventListener('click', showCartContents);
+                        
+                    });
+                    function removeItemFromCart(index) {
+                        var shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
+                        shoppingCart.splice(index, 1); // 移除指定索引的商品
+                        localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart)); // 保存更新后的购物车
+                        showCartContents(); // 重新显示购物车内容
+                    }
     </script>
 </body>
 <footer>

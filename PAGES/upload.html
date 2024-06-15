@@ -96,6 +96,11 @@
     </footer>
 
     <script>
+        function generateSecureRandomId() {
+            const array = new Uint32Array(1);
+            window.crypto.getRandomValues(array);
+            return array[0].toString(36);
+        }
         // 智能合約 ABI 和地址
         const contractABI = [{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"productId","type":"uint256"},{"indexed":false,"internalType":"string","name":"name","type":"string"},{"indexed":false,"internalType":"string","name":"variety","type":"string"},{"indexed":false,"internalType":"string","name":"origin","type":"string"},{"indexed":false,"internalType":"string","name":"description","type":"string"},{"indexed":false,"internalType":"string","name":"price","type":"string"},{"indexed":false,"internalType":"address","name":"owner","type":"address"}],"name":"ProductCreated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"productId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"timestamp","type":"uint256"},{"indexed":false,"internalType":"string","name":"description","type":"string"}],"name":"RecordAdded","type":"event"},{"inputs":[{"internalType":"uint256","name":"productId","type":"uint256"},{"internalType":"string","name":"description","type":"string"}],"name":"addRecord","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"variety","type":"string"},{"internalType":"string","name":"origin","type":"string"},{"internalType":"string","name":"description","type":"string"},{"internalType":"string","name":"price","type":"string"}],"name":"createProduct","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"productId","type":"uint256"}],"name":"getProduct","outputs":[{"components":[{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"variety","type":"string"},{"internalType":"string","name":"origin","type":"string"},{"internalType":"string","name":"description","type":"string"},{"internalType":"string","name":"price","type":"string"}],"internalType":"struct AgriProductTrace.Product","name":"","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"productId","type":"uint256"}],"name":"getRecords","outputs":[{"components":[{"internalType":"uint256","name":"timestamp","type":"uint256"},{"internalType":"string","name":"description","type":"string"}],"internalType":"struct AgriProductTrace.Record[]","name":"","type":"tuple[]"}],"stateMutability":"view","type":"function"}];
         const contractAddress = '0x25CEc1af82afEB889bB6624BAe09F6c520AA8Fd6'; // 替換為您的合約地址
@@ -122,6 +127,7 @@
                     const productOrigin = document.getElementById('productOrigin').value;
                     const productDescription = document.getElementById('productDescription').value;
                     const productPrice = document.getElementById('productPrice').value;
+                    const secureId = generateSecureRandomId();
                     const accounts = await web3.eth.getAccounts();
                     const userAccount = accounts[0];
                     
@@ -131,26 +137,29 @@
                         ).send({ from: userAccount });
                         const productId = result.events.ProductCreated.returnValues.productId;
                         alert(`新產品已創建，產品 ID: ${productId}`);
-                    } catch (error) {
-                        console.error(error);
-                        alert('創建產品失敗');
-                    }
-
-                    const newProductData = {
+                        const newProductData = {
+                            id:secureId,
                             name: productName,
                             variety: productVariety,
                             origin: productOrigin,
                             description: productDescription,
                             price: productPrice
                         };
+                        alert(newProductData)
 
-                    await fetch('http://127.0.0.1:5000/api/products/create', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(newProductData)
-                    });
+                        await fetch('http://127.0.0.1:5000/api/products/create', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(newProductData)
+                        });
+                    } catch (error) {
+                        console.error(error);
+                        alert('創建產品失敗');
+                    }
+
+                    
                     
                     
                 });
