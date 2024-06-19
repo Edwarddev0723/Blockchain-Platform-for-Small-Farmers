@@ -46,5 +46,13 @@
         "origin": "\u81ea\u5bb6\u967d\u53f0(\u65b0\u7af9\u7e23)",
         "description": "\u81ea\u5bb6\u967d\u53f0\u7a2e\u690d\u9ad8\u9e97\u83dc",
         "price": "80"
+    },
+    {
+        "id": "1htpkn",
+        "name": "\u9ad8\u9e97\u83dc",
+        "variety": "\u68a8\u5c71\u9ad8\u9e97\u83dc",
+        "origin": "\u81ea\u5bb6\u967d\u53f0(\u65b0\u7af9\u7e23)",
+        "description": "\u81ea\u5bb6\u967d\u53f0\u7a2e\u690d\u9ad8\u9e97\u83dc",
+        "price": "80"
     }
 ]
